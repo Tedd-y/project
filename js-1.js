@@ -35,7 +35,7 @@ function newWord(){
         else{
             y.className="l"
         }
-        y.innerHTML = x//change later
+        y.innerHTML = '&nbsp;'//change later
         y.id = "l" + i
 
         letterDiv.appendChild(y)
@@ -63,14 +63,17 @@ function keyboard(){
 function check(b){
     //to either end or show next fail
     var x = doesExist(b.innerHTML)
+    b.onclick = ""
     if(x){
+        b.style.background = "#9f9";
         if(wordLeft.length==0){
             //end the game
-            console.log("tamat")
+            endGame(true)
         }
     }else{
         //function to show its wrong
-        console.log("salah")
+        b.style.background = "#aaa";
+        showFail()
     }
 }
 
@@ -88,7 +91,31 @@ function doesExist(k){
 function reveal(a){
     for(i=0; i<words[select][0].length; i++){
         if(a==words[select][0][i].toUpperCase()){
-            document.getElementById("l"+i).innerText = "tes"
+            document.getElementById("l"+i).innerText = a
         }
+    }
+}
+
+function showFail(){
+    fails ++
+    switch(fails){
+        case 1: console.log("salah #1"); break;
+        case 2: console.log("salah #2"); break;
+        case 3: console.log("salah #3"); break;
+        case 4: console.log("salah #4"); break;
+        case 5: console.log("salah #5"); break;
+        case 6: console.log("salah #6"); break;
+        case 7: console.log("salah #7"); break;
+        case 8: console.log("salah #8"); break;
+        case 9: console.log("salah #9"); break;
+        case 10: endGame(false); break;
+    }
+}
+
+function endGame(y){
+    if(y){
+        alert("You Win!");
+    }else{
+        alert(`Better Luck Next Time :( The word is ${words[select][0]}`)
     }
 }

@@ -22,3 +22,40 @@ footer{
     bottom: 1%;
     right: 1%;
 }
+
+#theLetter{
+    font-size: 300%;
+    text-align: center;
+    position: relative;
+}
+
+#keyboard{
+    font-size: 150%;
+    text-align: center;
+    position: relative;
+}
+
+.key{
+    background: #eee;
+    background: linear-gradient(#fff, #eee);
+    background: -webkit-linear-gradient(top, #fff, #eee);
+    background: -ms-linear-gradient(top, #fff, #eee);
+    background: -moz-linear-gradient(top, #fff, #eee);
+    background: -o-linear-gradient(top, #fff, #eee);
+    box-shadow: 1px 1px 1px 0 #ccc;
+    display: inline-block;
+    margin: 2px;
+    margin-top: 30%;
+    padding: 8px;
+    width: 25px;
+    text-align: center;
+}
+
+.l{
+    box-shadow: 0 3px 0 -1px #555;
+    display: inline-block;
+    margin: 1px;
+    height: 50px;
+    text-transform: uppercase;
+    width: 50px;
+}
