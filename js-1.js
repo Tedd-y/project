@@ -19,6 +19,7 @@ function startGame(){
     
     newWord()
     keyboard()
+    hidePlayer()
 }
 
 function newWord(){
@@ -60,6 +61,12 @@ function keyboard(){
     }
 }
 
+function hidePlayer(){
+    for(i=1; i<11; i++){
+        document.getElementById("p"+i).style.visibility = "hidden";
+    }
+}
+
 function check(b){
     //to either end or show next fail
     var x = doesExist(b.innerHTML)
@@ -98,24 +105,85 @@ function reveal(a){
 
 function showFail(){
     fails ++
+    var reveal = document.getElementById("p"+fails).style.visibility = "visible";
+    
     switch(fails){
-        case 1: console.log("salah #1"); break;
-        case 2: console.log("salah #2"); break;
-        case 3: console.log("salah #3"); break;
-        case 4: console.log("salah #4"); break;
-        case 5: console.log("salah #5"); break;
-        case 6: console.log("salah #6"); break;
-        case 7: console.log("salah #7"); break;
-        case 8: console.log("salah #8"); break;
-        case 9: console.log("salah #9"); break;
-        case 10: endGame(false); break;
+        case 1: 
+            reveal 
+        break;
+        
+        case 2: 
+            reveal 
+        break;
+        
+        case 3: 
+            reveal
+        break;
+        
+        case 4: 
+            reveal 
+        break;
+        
+        case 5: 
+            reveal 
+            getHint()
+        break;
+        
+        case 6: 
+            reveal 
+        break;
+        
+        case 7: 
+            reveal
+        break;
+        
+        case 8: 
+            reveal 
+        break;
+        
+        case 9: 
+            reveal
+        break;
+        
+        case 10: 
+            reveal
+            endGame(false) 
+        break;
     }
 }
 
+function getHint(){
+    var  hangModel = document.getElementById("hangModel")
+    var hint = document.createElement("span")
+    
+    hint.className = "hintButton"
+    hint.innerText = "Click Me!"
+    hint.onclick = function(){
+        showHint()
+    }
+    hangModel.appendChild(hint)
+}
+
+function showHint(){
+    var hintBox = document.getElementById("hintBox")
+    var hintContent = document.getElementById("textHintContent")
+
+    hintBox.style.visibility = "visible";
+    hintContent.innerText = words[select][1]
+}
+
 function endGame(y){
+    var endScreen = document.getElementById("endScreen")
+    var title = document.getElementById("title")
+    var text = document.getElementById("text")
+
+    endScreen.style.visibility = "visible";
+
     if(y){
-        alert("You Win!");
+        title.innerText = "You Win!"
+        text.innerHTML = `Congratulations! <br><br> You guessed the word!`
     }else{
-        alert(`Better Luck Next Time :( The word is ${words[select][0]}`)
+        title.innerText = "You Lost :("
+        text.innerHTML = `Better luck next time! <br><br> The word is ${words[select][0]}`
     }
 }
