@@ -36,7 +36,7 @@ function newWord(){
         else{
             y.className="l"
         }
-        y.innerHTML = '&nbsp;'//change later
+        y.innerHTML = '&nbsp;'
         y.id = "l" + i
 
         letterDiv.appendChild(y)
